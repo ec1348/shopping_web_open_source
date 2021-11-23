@@ -5,6 +5,7 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let memberRouter = require('./routes/member_router');
 let productRouter = require('./routes/product_router')
+let orderRouter = require('./routes/order_router')
 
 let app = express();
 
@@ -19,6 +20,7 @@ app.get('/', ( req, res ) => {
 })
 app.use('/api/member', memberRouter);
 app.use('/api/product', productRouter);
+app.use('/api/order', orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
