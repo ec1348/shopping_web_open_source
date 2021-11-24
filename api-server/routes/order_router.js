@@ -6,5 +6,6 @@ orderModifyMethod = new OrderModifyMethod()
 router.post('/', orderModifyMethod.createOrder)
 router.get('/', orderModifyMethod.getMemberOrder)
 router.put('/', orderModifyMethod.updateOrder)
+router.delete('/', orderModifyMethod.deleteOrder)
 
 module.exports = router
