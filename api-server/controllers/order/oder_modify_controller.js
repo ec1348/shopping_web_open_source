@@ -2,6 +2,7 @@ let onTime = require('../../utils/time')
 let verify_token = require('../../service/verify_token')
 let createOrderModel = require('../../models/order/new_order_model')
 let getMemberOrderModel = require('../../models/order/get_personal_order_model')
+let updateOrderModel = require('../../models/order/update_order_model')
 
 module.exports = class ModifyOrder {
     createOrder(req, res, next) {
@@ -39,6 +40,33 @@ module.exports = class ModifyOrder {
                 })
             })
         }, err => {
+            res.json({
+                result:err
+            })
+        })
+    }
+    updateOrder(req, res, next) {
+        const token = req.headers['token']
+        verify_token(token).then(result => {
+            const memberID = result.data
+            const updateOrderData = {
+                orderID: req.body.orderID,
+                memberID: memberID,
+                productID: req.body.productID,
+                quantity: req.body.quantity,
+                updateDate: onTime()
+            }
+            updateOrderModel(updateOrderData).then(result => {
+                res.json({
+                    result:result
+                })
+            }, err => {
+                res.json({
+                    result:err
+                })
+            }
+            )
+        },err => {
             res.json({
                 result:err
             })
