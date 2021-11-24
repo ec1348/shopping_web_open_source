@@ -7,5 +7,6 @@ router.post('/', orderModifyMethod.createOrder)
 router.get('/', orderModifyMethod.getMemberOrder)
 router.put('/', orderModifyMethod.updateOrder)
 router.delete('/', orderModifyMethod.deleteOrder)
+router.post('/newProduct', orderModifyMethod.addProductToOrder)
 
 module.exports = router

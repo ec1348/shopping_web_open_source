@@ -4,6 +4,7 @@ let createOrderModel = require('../../models/order/new_order_model')
 let getMemberOrderModel = require('../../models/order/get_personal_order_model')
 let updateOrderModel = require('../../models/order/update_order_model')
 let deleteOrderModel = require('../../models/order/delete_order_model')
+let addProductToOrderModel = require('../../models/order/add_product_to_order_model')
 
 module.exports = class ModifyOrder {
     createOrder(req, res, next) {
@@ -94,6 +95,32 @@ module.exports = class ModifyOrder {
         },err => {
             res.json({
                 result:err
+            })
+        })
+    }
+    addProductToOrder(req, res, next){
+        const token = req.headers['token']
+        verify_token(token).then(result => {
+            const memberID = result.data
+            const newProductToOrderData = {
+                orderID: req.body.orderID,
+                memberID: memberID,
+                productID: req.body.productID,
+                quantity: req.body.quantity,
+                orderDate: onTime()
+            }
+            addProductToOrderModel(newProductToOrderData).then(result => {
+                res.json({
+                    result: result
+                })
+            }, err => {
+                res.json({
+                    result: err
+                })
+            })
+        }, err => {
+            res.json({
+                result: err
             })
         })
     }
