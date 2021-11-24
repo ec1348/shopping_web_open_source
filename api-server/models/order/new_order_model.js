@@ -33,6 +33,7 @@ module.exports = function newOrder(newOrderList) {
                     return
                 }
                 result.status = "Create order successfully."
+                result.newOrder = orderData
                 resolve(result)
             })
         }
