@@ -5,7 +5,6 @@ module.exports = function checkOrderComplete(orderID) {
     return new Promise ( (resolve, reject) => {
         db.query('SELECT * FROM order_list WHERE order_id = ? AND is_complete = 0', orderID, function(err, row) {
             if(err){
-                console.log("**********************")
                 console.log(err)
                 reject(false)
                 return
