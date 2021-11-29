@@ -3,13 +3,16 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let config = require('config')
 let memberRouter = require('./routes/member_router');
 let productRouter = require('./routes/product_router')
 let orderRouter = require('./routes/order_router')
 
 let app = express();
+if(config.util.getEnv('NODE_ENV')!=='test'){
+  app.use(logger('dev'));
 
-app.use(logger('dev'));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
