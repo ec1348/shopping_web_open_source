@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Syncopate';
+    font-style: normal;
+    font-weight: normal;
+    // sass-lint:disable no-duplicate-properties indentation
+    src: url('./fonts/Syncopate-Regular.ttf') format("truetype"),
+         url('./fonts/Syncopate-Bold.ttf') format("opentype");
+}
+@font-face {
+    font-family: 'Josefin Slab';
+    font-style: normal;
+    font-weight: normal;
+    // sass-lint:disable no-duplicate-properties indentation
+    src: url('./fonts/JosefinSlab-Medium.ttf') format("truetype");
+}
+@font-face {
+    font-family: 'Baloo';
+    font-style: normal;
+    font-weight: normal;
+    // sass-lint:disable no-duplicate-properties indentation
+    src: url('./fonts/Baloo2-Regular.ttf') format("truetype");
+}

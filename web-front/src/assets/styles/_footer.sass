@@ -1,0 +1,116 @@
+.page-footer
+    border-top: 1px solid #b6b6b6
+
+.sub-footer-container
+    display: flex
+    margin: auto
+    .footer-up-box
+        width: 50%
+
+.footer-up
+    max-width: 1140px
+    width: 100%
+    &-subscription
+        padding: 40px 40px 40px 0
+        position: relative
+        &::after
+            content: ""
+            position: absolute
+            right: 0
+            top: 50%
+            height: 60%
+            width: 1px
+            transform: translateY(-50%)
+            background-color: #d7d7d7
+        .text-subscription
+            margin-top: 0
+            font-weight: 700
+        .input-block
+            height: 45px
+            margin-bottom: 10px
+            .email-box
+                width: 70%
+                height: 100%
+                font-size: 1rem
+                outline: none
+                border: $borderLine
+            .sub-button
+                background-color: $black
+                font-size: 1rem
+                color: $white
+                width: 30%
+                height: 100%
+                cursor: pointer
+                box-shadow: none
+                border: none
+                &:hover
+                    background-color: $white
+                    color: $black
+                    border: 1px solid $black
+                    @include transition-ease
+        .text-social-media
+            display: inline-block
+            font-weight: 700
+            margin: 0
+        .icon-social-media-block
+            display: inline-block
+            margin: 0 10px
+            .footer-link
+                display: inline-block
+                margin: 0 5px
+    &-contact
+        display: flex
+        align-items: center
+        padding: 40px 0 40px 40px
+        .customer-contact-box
+            display: flex
+            flex-direction: column
+            align-items: center
+            width: 50%
+            .contact-text
+                font-weight: 1000
+            .bus-hour-contact-text
+                margin: 0
+        .order-contact-box
+            display: flex
+            flex-direction: column
+            align-items: center
+            width: 50%
+            .contact-text
+                font-weight: 1000
+            .bus-hour-contact-text
+                margin: 0
+    
+.footer-down
+    background-color: $white
+    color: $black
+    border-top: 1px solid #b6b6b6 
+    padding: 40px 0
+    &-container
+        max-width: 1140px
+        width: 80%
+        display: flex
+        margin: auto
+        &-item
+            flex: 1
+            &-text
+                margin: 0 0 15px 0
+                font-weight: 1000
+            &-content
+                display: flex
+                flex-direction: column
+            a
+                color: $black
+                text-decoration: none
+                margin: 5px 0
+                font-size: 0.8rem
+                @include transition-ease
+                &:hover
+                    color: $hoverFontColor
+        .copyright
+            text-align: center
+            flex: 2
+            font-family: 'Josefin Slab','sans-serif','Arial','Syncopate'
+
+        
+

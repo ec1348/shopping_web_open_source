@@ -1,0 +1,101 @@
+.page-header
+    background-color: $topNavBackground
+    width:100%
+    font-family: 'Syncopate','Arial','sans-serif'
+    .header-up
+        padding: 25px 20px 0
+        display: flex
+
+.menu-logo
+    display: inline-block
+    padding: 0
+    text-align: center
+
+.menu-flex
+    flex: 1
+    .top-bar-link
+        color: $sideBarFontColor
+        font-size: 14px
+        font-weight: 800
+        display: inline-block
+        text-decoration: none
+        padding: 0
+        margin: 0 14px
+        @include transition-ease
+        &:hover
+            color: $hoverFontColor
+
+.menu-customer
+    display: flex
+    justify-content: flex-end
+    padding-right: 20px
+    padding-top: 4px
+
+.menu-business
+    display: flex
+    justify-content: flex-start
+    padding-left: 10px
+    padding-top: 4px
+
+.user-icon,
+.cart-icon
+    @include transition-ease
+    &:hover
+        color: #7a0404
+
+
+.header-down
+    &-container
+        display: flex
+        max-width: 80%
+        width: 100%
+        margin: auto
+        justify-content: center
+    &-box
+        padding: 30px 30px 10px 30px
+    a
+        font-family: 'Josefin Slab','Syncopate','Arial','sans-serif'
+        text-decoration: none
+        font-size: 1.4rem
+        font-weight: 1000
+        color: $topNavFontColor
+        @include transition-ease
+        &:hover
+            color: $hoverFontColor
+
+/* menu icon*/
+.hamburger
+    margin-top: 5px 
+    margin-right: calc( 80% - $iconWidth )
+    margin-bottom: 5px
+    margin-left: 10%
+    padding: 5px
+    cursor: pointer
+    &_item
+        width: $iconWidth
+        height: 2px
+        background-color: $topNavFontColor
+        margin: 4px 0 4px 10%
+        transition: transform 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 300ms linear
+        &--first
+            .hamburgerOpen & 
+                transform: translate(0, 6px) rotate(-45deg)    
+        &--second 
+            .hamburgerOpen & 
+                opacity: 0
+        &--third 
+            .hamburgerOpen &
+                transform: translate(0, -6px) rotate(45deg)
+
+
+.slide-enter-active,
+.slide-leave-active
+    transition: transform 3s ease
+
+.slide-enter,
+.slide-leave-to 
+    transform: translateX(-100%)
+    transition: all 200ms ease-in 0s    
+
+
+
