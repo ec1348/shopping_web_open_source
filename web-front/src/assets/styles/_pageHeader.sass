@@ -21,6 +21,7 @@
         text-decoration: none
         padding: 0
         margin: 0 14px
+        cursor: pointer
         @include transition-ease
         &:hover
             color: $hoverFontColor
@@ -88,14 +89,21 @@
                 transform: translate(0, -6px) rotate(45deg)
 
 
-.slide-enter-active,
-.slide-leave-active
+.sidebar-slide-enter-active,
+.sidebar-slide-leave-active,
+.account-sidebar-slide-enter-active,
+.account-sidebar-slide-leave-active
     transition: transform 3s ease
 
-.slide-enter,
-.slide-leave-to 
+.sidebar-slide-enter,
+.sidebar-slide-leave-to 
     transform: translateX(-100%)
     transition: all 200ms ease-in 0s    
+
+.account-sidebar-slide-enter,
+.account-sidebar-slide-leave-to 
+    transform: translateX(100%)
+    transition: all 200ms ease-in 0s 
 
 
 

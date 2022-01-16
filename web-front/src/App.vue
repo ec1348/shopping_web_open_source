@@ -13,42 +13,67 @@
         <router-link to="/about" class="top-bar-link">About</router-link>
         <router-link to="/our-shops" class="top-bar-link">Our shops</router-link>
       </nav>
-      <a href="/" class="menu-flex menu-logo"> <!--inline-->
+      <router-link to="/" class="menu-flex menu-logo"> <!--inline-->
         <svg-icon iconClass="logo" className="logo-icon" />
-      </a>
+      </router-link>
       <nav class="menu-flex menu-customer"> <!--block-->
-        <a href="/customer/accout" class="top-bar-link customer-account"> <!--inline-->
+        <a @click="toggleAccountSidebar" class="top-bar-link customer-account"> <!--inline-->
           <svg-icon iconClass="user" className="user-icon" /> <!--inline-->
         </a>
-        <a href="/checkout/cart" class="top-bar-link checkout-cart">
+        <router-link @mouseover="showCart = true" @mouseleave="showCart = false" to="/cart" class="top-bar-link checkout-cart">
           <svg-icon iconClass="cart" className="cart-icon" />
-        </a>
+          <span>({{ totalQuantity }}) </span>
+        </router-link>
+        <CartSidebar 
+          @mouseover="showCart = true"
+          @mouseleave="showCart = false"
+          v-show="showCart"
+          :cart = "cart"
+          :inventory = "inventory"
+          :remove = "removeItem"
+          class="cartSideBar"
+        />
       </nav>
     </div>
     <div class="header-down">
       <div class="header-down-container">
         <div class="header-down-box">
-          <a href="/collections/cake" class="header-down-link">CAKES</a>
+          <router-link to="/cakes" class="header-down-link">CAKES</router-link>
         </div>
         <div class="header-down-box">
-          <a href="/breads" class="header-down-link">BREADS</a>
+          <router-link to="/breads" class="header-down-link">BREADS</router-link>
         </div>
         <div class="header-down-box">
-          <a href="/cookies" class="header-down-link">COOKIES</a>
+          <router-link to="/cookies" class="header-down-link">COOKIES</router-link>
         </div>
         <div class="header-down-box">
-          <a href="/desserts" class="header-down-link">DESSERTS</a>
+          <router-link to="/desserts" class="header-down-link">DESSERTS</router-link>
         </div>
       </div>
     </div>
   </header>
 
-  <transition name="slide">
+  <transition name="sidebar-slide">
     <Sidebar
       v-if = "showBusSideBar"
     />
   </transition>
-  <router-view />
+  <transition name="account-sidebar-slide">
+    <AccountSidebar
+      v-if = "showAccountSideBar"
+      :user_info = "user_info"
+      @toggleAccountSidebar="showAccountSideBar=$event"
+    />
+  </transition>
+  <router-view 
+    :inventory = "inventory"
+    :addToCart = "addToCart"
+    :emptyCart = "emptyCart"
+    :cart = "cart"
+    :remove = "removeItem"
+    :user_info = "user_info"
+    @toggleAccountSidebar="showAccountSideBar=$event"
+  />
 
   <Footer v-if="!showBusSideBar"
   />
@@ -57,19 +82,62 @@
 <script>
 import Sidebar from '@/components/SideBar.vue'
 import Footer from '@/components/Footer.vue'
+import AccountSidebar from '@/components/AccountSideBar.vue'
+import CartSidebar from '@/components/CartSideBar.vue'
 export default {
   data(){
     return {
-      showBusSideBar: false
+      showBusSideBar: false,
+      showAccountSideBar: false,
+      showCart: false,
+      inventory: [],
+      cart: {},
+      user_info: {}
     }
   },
   components: {
     Sidebar,
+    AccountSidebar,
+    CartSidebar,
     Footer
   },
   methods:{
     toggleBusSidebar () {
       this.showBusSideBar = !this.showBusSideBar
+    },
+    toggleAccountSidebar () {
+      if(localStorage.getItem('token')){
+        this.$router.push({name: 'Account'})
+      }else{
+        this.showAccountSideBar = !this.showAccountSideBar
+      }
+    },
+    addToCart (name) {
+      if (!this.cart[name]) this.cart[name] = 0
+      // console.log("name:", name, "index: ", index)
+      this.cart[name] += 1
+    },
+    emptyCart(){
+      this.cart = {}
+    },
+    removeItem (name) {
+      delete this.cart[name]
+    },
+    async getData() {
+        const url = 'api/product'
+        let res = await this.$api.get(url)
+        this.inventory = res.result
+        console.log(res.result)
+    }
+  },
+  created(){
+      this.getData()
+  },
+  computed: {
+    totalQuantity () {
+      return Object.values(this.cart).reduce((sum, cur) => {
+        return sum + cur
+      }, 0)
     }
   }
 

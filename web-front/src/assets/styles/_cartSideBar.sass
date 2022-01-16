@@ -1,0 +1,41 @@
+.cart-container
+    border: $borderLineLight
+    background-color: $white
+    position: fixed
+    top: 70px
+    right: 20px
+    max-height: 70vh
+    overflow: scroll
+    .cart
+        h1
+            text-align: center
+        .cart-table
+            font-family: 'Arial','sans-serif'
+            th,td
+                padding: 0 10px
+        .spread
+            display: flex
+            flex-direction: column
+            border-top: $borderLineLight
+            span
+                margin: 20px auto 0 auto
+            .link-to-cart
+                text-decoration: none
+                text-align: center
+                font-family: "Baloo", 'Arial','sans-serif'
+                width: 30%
+                background-color: $black
+                color: $white
+                margin: 20px auto
+                padding: 10px
+                font-size: 1.2rem
+                border: none
+                cursor: pointer
+                @include transition-ease
+                &:hover
+                    border: $borderLine
+                    background-color: $white
+                    color: $black
+        .center
+            text-align: center
+

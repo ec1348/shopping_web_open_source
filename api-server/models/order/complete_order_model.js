@@ -67,10 +67,10 @@ module.exports = function completeOrder(completeOrderList){
         const name = memberData[0].name
 
         const mailOptions = {
-            from: `"Test name cake store" <${config.senderMail.user}>`,
+            from: `"Eric pastry Taipei" <${config.senderMail.user}>`,
             to: email,
             subject: name + " [Your order has completed]",
-            html: `<p>Hi, ${name} </p>` + `<br>` + `<br>` + `<span> Thanks for your order from <b>test name cake store</b>, we hope to serve you again soon! </span>`
+            html: `<p>Hi, ${name} </p>` + `<br>` + `<br>` + `<span> Thanks for your order from <b>EIRC PASTRY TAIPEI </b> we hope to serve you again soon! </span>`
         }
 
         transport.sendMail( mailOptions, ( err, info ) => {
@@ -79,7 +79,8 @@ module.exports = function completeOrder(completeOrderList){
             }
             console.log("Message %s sent: %s", info.messageId, info.response)
         })
-        result.status = "Order id: " + completeOrderList.orderID + " payment accomplished, thanks for using our service! Order detail will be send to " + email
+        result.status = "Order has complished."
+        result.message = "Order id: " + completeOrderList.orderID + " payment accomplished, thanks for using our service! Order detail will be sent to " + email
         resolve(result)
     })
 }

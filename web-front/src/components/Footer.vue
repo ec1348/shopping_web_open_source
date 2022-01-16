@@ -70,7 +70,7 @@
             </div>
             <div class="copyright footer-down-container-item">
                 <svg-icon iconClass="logo" className="logo-icon" />
-                <div>&copy;Copyright Eric Pastry 2022</div>
+                <div>&copy;Copyright Eric Pastry Taipei 2022</div>
             </div>
             </div>
         </div>

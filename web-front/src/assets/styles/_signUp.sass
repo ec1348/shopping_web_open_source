@@ -1,0 +1,50 @@
+.signUp-page
+    min-height: 100vh
+    height: 100%
+    border-top: $borderLineLight
+.signUp-wrapper
+    display: flex
+    flex-direction: column
+    width: 80%
+    margin: 40px auto
+    .signUp-header
+        p
+            text-align: center
+            font-size: 1.5rem
+            font-weight: 700
+    .signUp-container
+        width: 50%
+        margin: auto
+        &-title
+            font-family: 'Arial','sans-serif'
+            font-size: 1.5rem
+            font-weight: 700
+        .signUp-form
+            display: flex
+            flex-direction: column
+            label,
+            input,
+            button
+                padding: 10px 0
+                &::after
+                    content: "*"
+                    color: $hoverFontColor
+                    font-size: 500
+            label
+                text-align: left
+            button
+                margin-top: 20px
+                color: $white
+                background-color: $black
+                border: none
+                @include transition-ease
+                &:hover
+                    cursor: pointer
+                    color: $black
+                    background-color: $white
+                    border: $borderLine
+            input
+                font-size: 1rem
+                border: none
+                border-bottom: $borderLine
+                outline: none

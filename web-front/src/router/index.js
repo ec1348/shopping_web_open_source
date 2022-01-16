@@ -13,9 +13,44 @@ const routes = [
     component: () => import("../views/About.vue"),
   },
   {
-    path: "/collections/cake",
-    name: "Cake",
-    component: () => import("../views/Cake.vue")
+    path: "/cakes",
+    name: "Cakes",
+    component: () => import("../views/Cakes.vue")
+  },
+  {
+    path: "/breads",
+    name: "Breads",
+    component: () => import("../views/Breads.vue")
+  },
+  {
+    path: "/cookies",
+    name: "Cookies",
+    component: () => import("../views/Cookies.vue")
+  },
+  {
+    path: "/desserts",
+    name: "Desserts",
+    component: () => import("../views/Desserts.vue")
+  },
+  {
+    path: "/signup",
+    name: "Create-Account",
+    component: () => import("../views/SignUp.vue")
+  },
+  {
+    path: "/account",
+    name: "Account",
+    component: () => import("../views/Account.vue")
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+    component: () => import("../views/Cart.vue")
+  },
+  {
+    path: "/checkout",
+    name: "Checkout",
+    component: () => import("../views/Checkout.vue")
   }
 ];
 
