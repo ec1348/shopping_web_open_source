@@ -56,6 +56,7 @@
   <transition name="sidebar-slide">
     <Sidebar
       v-if = "showBusSideBar"
+      @toggleBusSidebar="showBusSideBar=$event"
     />
   </transition>
   <transition name="account-sidebar-slide">

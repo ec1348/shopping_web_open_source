@@ -2,25 +2,25 @@
   <div class="sidebar-business">
       <nav class="menu-flex">  <!--block-->
         <div class="sidebar-box">
-          <a href="/cakes" class="side-bar-link">CAKES</a>
+          <router-link to="/cakes" @click="toggleBusSidebar()" class="side-bar-link">CAKES</router-link>
         </div>
         <div class="sidebar-box">
-          <a href="/breads" class="side-bar-link">BREADS</a>
+          <router-link to="/breads" @click="toggleBusSidebar()" class="side-bar-link">BREADS</router-link>
         </div>
         <div class="sidebar-box">
-          <a href="/cookies" class="side-bar-link">COOKIES</a>
+          <router-link to="/cookies" @click="toggleBusSidebar()" class="side-bar-link">COOKIES</router-link>
         </div>
         <div class="sidebar-box">
-          <a href="/desserts" class="side-bar-link">DESSERTS</a>
+          <router-link to="/desserts" @click="toggleBusSidebar()" class="side-bar-link">DESSERTS</router-link>
         </div>
         <div class="sidebar-box">
-          <a href="/" class="side-bar-link">Home</a><!--inline-->
+          <router-link to="/" @click="toggleBusSidebar()" class="side-bar-link">Home</router-link><!--inline-->
         </div>
         <div class="sidebar-box">
-          <a href="/about" class="side-bar-link">About</a>
+          <router-link to="/about" @click="toggleBusSidebar()" class="side-bar-link">About</router-link>
         </div>
         <div class="sidebar-box">
-          <a href="/our-shops" class="side-bar-link">Our shops</a>
+          <router-link to="/our-shops" @click="toggleBusSidebar()" class="side-bar-link">Our shops</router-link>
         </div>
       </nav>
   </div>
@@ -32,5 +32,10 @@ export default {
   name: "Sidebar",
   components: {
   },
+  methods: {
+    toggleBusSidebar(){
+        this.$emit('toggleBusSidebar',false)
+    }
+  }
 };
 </script>
